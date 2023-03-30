@@ -61,17 +61,31 @@ document.querySelector("#mute").addEventListener("click", function() {
 });
 
 //Adjusting the slider
-let slider = document.querySelector("#slider")
+let slider = document.querySelector("#slider");
 
-slider.addEventListener("click", function(){
-; 
-let output = document.querySelector("#volume"); 
-output.innerHTML = slider.value + "%";
-
-slider.oninput = function (){
-	output.innerHTML = this.value +"%";
-}
+slider.addEventListener("input", function(){; 
+	let output = document.querySelector("#volume");
+	output.innerHTML = slider.value + "%";
+	video.volume = slider.value/100;
 })
+
+slider.addEventListener("mouseup", function(){; 
+	let output = document.querySelector("#volume"); 
+	output.innerHTML = slider.value + "%";
+})
+
+slider.addEventListener("touchend", function(){; 
+	let output = document.querySelector("#volume"); 
+	output.innerHTML = slider.value + "%";
+	video.volume = slider.value/100;
+	console.log(slider.value/100)
+})
+
+
+// slider.oninput = function (){
+// 	output.innerHTML = this.value +"%";
+// }
+// })
 
 document.querySelector("#vintage").addEventListener("click", function(){
 	video.classList.add("oldSchool")
